@@ -95,6 +95,23 @@ void insertRecipe(vector<Recipe>& R) {
     cout << "Recipe added successfully!" << endl;
 }
 
+void searchRecipesByIngredient(const vector<Recipe>& R, const string& ingredient) {
+    bool found = false;
+    cout << "Recipes containing " << ingredient << ":" << endl;
+    for (const auto& recipe : R) {
+        for (const auto& ing : recipe.ingredients) {
+            if (ing == ingredient) {
+                cout << "- " << recipe.getName() << endl;
+                found = true;
+                break; // Breaks the inner loop if ingredient is found
+            }
+        }
+    }
+
+    if (!found) {
+        cout << "No recipes found containing " << ingredient << "." << endl;
+    }
+}
 
 void addtocat(vector<Recipe>& R){
     insertRecipe(R);
