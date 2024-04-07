@@ -179,19 +179,19 @@ int main() {
     RecipeManager rm;
     label:
     
-    if(option==0)
+    if(option==0) //This option is for inserting a recipe.
     { char add;
       do
-      {insertRecipe(R);
+      {insertRecipe(R);// inserts recipe
       cout<<"Do you want to add more recipe(y/n):";
-      cin>>add;
+      cin>>add; // variable which will loop this until user doesn't enter n
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       }
       while(add=='y');
     }
 
     else if(option==1){
-        cout<<"Enter name of a catagory you want to add: ";
+        cout<<"Enter name of a category you want to add: ";
         string cate;
         cin>>cate;
         rm.addCategory(cate);
@@ -201,7 +201,7 @@ int main() {
         addtocat(R);
     }
     
-    else if(option==3)
+    else if(option==3) //This option is for meal planning.
     {
         char add;
         int index;
@@ -220,7 +220,7 @@ int main() {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
             string rec;
-            cout<<"Enter the name of the reciepe to add in plan:";
+            cout<<"Enter the name of the recipe to add in plan:";
             cin>>rec;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
