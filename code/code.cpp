@@ -9,7 +9,42 @@ public:
 
     Category(string n) : name(n) {}
 };
-
+class MealPlan{
+    public:
+    string day;
+    bool added=false;
+    unordered_map<string, Recipe*> meals;
+    void addmeal(string type,Recipe* r)
+    {
+        meals[type]=r;added=true;
+    }
+};
+int setday(string Day){
+    if(Day=="monday"||Day=="Monday")
+    {
+        return 0;
+    }
+    else if(Day=="tuesday"||Day=="Tuesday")
+    {
+        return 1;
+    }
+    if(Day=="wednesday"||Day=="Wednesday")
+    {
+        return 2;
+    }if(Day=="Thursday"||Day=="thursday")
+    {
+        return 3;
+    }if(Day=="Friday"||Day=="friday")
+    {
+        return 4;
+    }if(Day=="saturday"||Day=="Saturday")
+    {
+        return 5;
+    }if(Day=="Sunday"||Day=="sunday")
+    {
+        return 6;
+    }
+} 
 class RecipeManager {
 private:
     unordered_map<string, Category*> categories;
@@ -49,4 +84,100 @@ void addtocat(vector<Recipe>& R){
     cin>>cate;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     rm.addRecipeToCategory(&R.back(),cate);
+}
+int main() {
+    cout<<"WELCOME TO RECIPE MANAGER!!\n\n\n";
+    int option;
+    vector<Recipe> R;
+    cout<<"0: To insert recipe:\n1: To adding a catagory:\n2: To adding recipe in a category:\n3: To plan your meal\n4: To display your meal\n5: To search recipe\n6: To search recipe by ingredients\n7: To display categories\n-1: Exit\n";
+    cin>>option;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    MealPlan plan[7];
+    RecipeManager rm;
+    label:
+    
+    if(option==0)
+    { char add;
+      do
+      {insertRecipe(R);
+      cout<<"Do you want to add more recipe(y/n):";
+      cin>>add;
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      }
+      while(add=='y');
+    }
+    
+    else if(option==3)
+    {
+        char add;
+        int index;
+        string DAY;
+        string type; 
+        do
+        {   
+            cout<<"Enter the day for which you want to plan:";
+            cin>>DAY;
+            index=setday(DAY);
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            plan[index].day=DAY;
+            
+            cout<<"Enter the type of meal(E.G. Breakfast,Lunch,Dinner):";
+            cin>>type;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            
+            string rec;
+            cout<<"Enter the name of the reciepe to add in plan:";
+            cin>>rec;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            
+            vector<Recipe>::iterator it;
+            for(it = R.begin(); it != R.end()&&it->name != rec; ++it) {
+            }
+            if(it == R.end())
+                cout << "The recipe of " << rec << " doesn't exist." << endl;
+            else {
+                plan[index].addmeal(type, &(*it)); 
+                cout << "The recipe of " << rec << " added successfully in your meal plan." << endl;
+            }
+            cout<<"\nDo you want to add more recipe in your plan(y/n):\n";
+            cin>>add;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        }while(add=='y');
+    }
+
+    else if(option==4)
+    {cout<<"Your this week's meal plan:"<<endl;
+      for (int i = 0; i < 7; i++) 
+      {
+            if (plan[i].added) 
+            {
+                cout << "\nDay: " << plan[i].day << endl;
+                for (auto it = plan[i].meals.begin(); it != plan[i].meals.end(); ++it) {
+                    cout << "Type: " << it->first << endl;
+                    cout << "Recipe: " << it->second->name << endl;
+                }
+            }
+      }cout<<endl;
+    }
+    
+    else if(option==6)
+    {
+    cout << "Enter an ingredient to search for: ";
+    string ingredient;
+    getline(cin, ingredient);
+    searchRecipesByIngredient(R, ingredient);
+    }
+    
+    else if(option==5){
+        searchRecipe(R);
+    }
+    
+    
+    cout<<"0: To insert recipe:\n1: To adding a catagory:\n2: To adding recipe in a category:\n3: To plan your meal\n4: To display your meal\n5: To search recipe\n6: To search recipe by ingredients\n7: To display categories\n-1: Exit\n";
+    cin>>option;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if(option!=-1)
+    goto label;    
+    return 0;
 }
