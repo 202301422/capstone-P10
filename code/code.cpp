@@ -27,10 +27,10 @@ class Recipe {
 };
 class Category {
 public:
-    string name;
-    vector<Recipe*> recipes;
+    string name;//This contains anme of the category.
+    vector<Recipe*> recipes;//recipe is in vector string form here.
 
-    Category(string n) : name(n) {}
+    Category(string n) : name(n) {}//I give this as a constructor.
 };
 class MealPlan{
     public:
