@@ -137,6 +137,8 @@ void searchRecipe(const vector<Recipe>& R) {
         cout << "Recipe not found!" << endl;   //And if it is not found it will print this.
     }
 }
+
+//This function is for searching recipe by any ingredient.
 void searchRecipesByIngredient(const vector<Recipe>& R, const string& ingredient) {
     bool found = false;
     cout << "Recipes containing " << ingredient << ":" << endl;
@@ -155,6 +157,7 @@ void searchRecipesByIngredient(const vector<Recipe>& R, const string& ingredient
     }
 }
 
+//This is for adding a category.
 void addtocat(vector<Recipe>& R){
     insertRecipe(R);
     RecipeManager rm;
