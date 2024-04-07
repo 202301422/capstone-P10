@@ -94,7 +94,26 @@ void insertRecipe(vector<Recipe>& R) {
     R.emplace_back(recipeName, ingred, instructions);
     cout << "Recipe added successfully!" << endl;
 }
+//We created this function for searching a reciepe by it's name.
+void searchRecipe(const vector<Recipe>& R) {
+    string searchRecipe;
+    cout << "Enter the name of the recipe you want instructions for: ";
+    getline(cin, searchRecipe); //Here we will take name of that reciepe.
 
+    bool found = false;  //Here it will search name of reciepe.
+    for (const auto& recipe : R) {
+        if (recipe.getName() == searchRecipe) {
+            found = true;
+            cout << "Recipe found!" << endl;
+            cout << "ingred: " << recipe.getingredAsString() << endl;
+            cout << "Instructions: " << recipe.getInstructions() << endl;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Recipe not found!" << endl;   //And if it is not found it will print this.
+    }
+}
 void searchRecipesByIngredient(const vector<Recipe>& R, const string& ingredient) {
     bool found = false;
     cout << "Recipes containing " << ingredient << ":" << endl;
