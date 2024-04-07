@@ -34,15 +34,15 @@ public:
 };
 class MealPlan{
     public:
-    string day;
-    bool added=false;
-    unordered_map<string, Recipe*> meals;
+    string day; // to store day for which you are planning the meal.
+    bool added=false; // indicates that the meal plan is added or not
+    unordered_map<string, Recipe*> meals; // map to store meal-type and recipe name
     void addmeal(string type,Recipe* r)
     {
-        meals[type]=r;added=true;
+        meals[type]=r;added=true;// makes added true whenever you enter any mealplan
     }
 };
-int setday(string Day){
+int setday(string Day){// to return index according to the day for an array.
     if(Day=="monday"||Day=="Monday")
     {
         return 0;
