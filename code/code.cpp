@@ -75,6 +75,26 @@ public:
         }
     }
 };
+//This function will take a vector object as input and will insert a recipe as you need.
+void insertRecipe(vector<Recipe>& R) {
+    string recipeName, ingredient, instructions;
+    vector<string> ingred;
+    cout << "Enter recipe name: ";  
+    getline(cin, recipeName);  //This will get name of the reciepe.
+
+    cout << "Enter ingred (type 'done' to finish): ";
+    while (getline(cin, ingredient) && ingredient != "done") {
+        ingred.push_back(ingredient);   //In this loop we will take ingredients.
+        cout << "Add another ingredient (or type 'done'): ";
+    }
+
+    cout << "Enter instructions: ";
+    getline(cin, instructions);  //Here we will take instructions.
+
+    R.emplace_back(recipeName, ingred, instructions);
+    cout << "Recipe added successfully!" << endl;
+}
+
 
 void addtocat(vector<Recipe>& R){
     insertRecipe(R);
