@@ -40,3 +40,13 @@ public:
         }
     }
 };
+
+void addtocat(vector<Recipe>& R){
+    insertRecipe(R);
+    RecipeManager rm;
+    cout<<"Enter category where you want to add this recipe: ";
+    string cate;
+    cin>>cate;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    rm.addRecipeToCategory(&R.back(),cate);
+}
