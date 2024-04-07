@@ -143,7 +143,7 @@ void searchRecipesByIngredient(const vector<Recipe>& R, const string& ingredient
     bool found = false;
     cout << "Recipes containing " << ingredient << ":" << endl;
     for (const auto& recipe : R) {
-        for (const auto& ing : recipe.ingredients) {
+        for (const auto& ing : recipe.ingred) {
             if (ing == ingredient) {
                 cout << "- " << recipe.getName() << endl;
                 found = true;
