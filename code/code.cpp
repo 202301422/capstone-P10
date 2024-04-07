@@ -7,7 +7,7 @@ class Recipe {
     vector<string> ingred; // contain's recipe's ingredients as vector of strings 
     string instructions;  // contains instructions about how to make recipe
     Recipe(string n,vector<string> ing,string instr):name(n),ingred(ing),instructions(move(instr)){}//constructer for object of recipe class
-    string getingredAsString() const {//function to add ingrediants in vector
+    string getingredAsString() const {//function to add ingredients in vector
         string ingredStr;
         for (const auto& ingredient : ingred) {
             ingredStr += ingredient + ", ";
@@ -189,7 +189,8 @@ int main() {
       }
       while(add=='y');
     }
-
+     
+//This option is for adding a category.
     else if(option==1){
         cout<<"Enter name of a category you want to add: ";
         string cate;
@@ -224,12 +225,12 @@ int main() {
             cin>>rec;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             
-            vector<Recipe>::iterator it;
-            for(it = R.begin(); it != R.end()&&it->name != rec; ++it) {
+            vector<Recipe>::iterator it; // points to vector of recipe
+            for(it = R.begin(); it != R.end()&&it->name != rec; ++it) {// if recipe found with same name then it will point to it and loop will stop
             }
-            if(it == R.end())
+            if(it == R.end())// if it doesn't find
                 cout << "The recipe of " << rec << " doesn't exist." << endl;
-            else {
+            else {// adds recipe in object of recipe which is present in array
                 plan[index].addmeal(type, &(*it)); 
                 cout << "The recipe of " << rec << " added successfully in your meal plan." << endl;
             }
@@ -239,7 +240,8 @@ int main() {
 
         }while(add=='y');
     }
-
+     
+//This option is for displaying whole meal plan it will show only that day which are alloted to them.
     else if(option==4)
     {cout<<"Your this week's meal plan:"<<endl;
       for (int i = 0; i < 7; i++) 
@@ -254,7 +256,7 @@ int main() {
             }
       }cout<<endl;
     }
-    
+     //Option 6 is for searching a recipe by its ingredients.
     else if(option==6)
     {
     cout << "Enter an ingredient to search for: ";
@@ -262,11 +264,11 @@ int main() {
     getline(cin, ingredient);
     searchRecipesByIngredient(R, ingredient);
     }
-    
+     //This is for searching a recipe.
     else if(option==5){
         searchRecipe(R);
     }
-
+//This option is for displaying all categories.
     else if(option==7){
         rm.displayCategories();
     }
@@ -274,7 +276,7 @@ int main() {
     cout<<"0: To insert recipe:\n1: To adding a catagory:\n2: To adding recipe in a category:\n3: To plan your meal\n4: To display your meal\n5: To search recipe\n6: To search recipe by ingredients\n7: To display categories\n-1: Exit\n";
     cin>>option;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    if(option!=-1)
+    if(option!=-1) //This will terminate program.
     goto label;    
     return 0;
 }
