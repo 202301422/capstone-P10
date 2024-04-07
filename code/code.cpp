@@ -106,6 +106,17 @@ int main() {
       }
       while(add=='y');
     }
+
+    else if(option==1){
+        cout<<"Enter name of a catagory you want to add: ";
+        string cate;
+        cin>>cate;
+        rm.addCategory(cate);
+    }
+    
+    else if(option==2){
+        addtocat(R);
+    }
     
     else if(option==3)
     {
@@ -172,7 +183,10 @@ int main() {
     else if(option==5){
         searchRecipe(R);
     }
-    
+
+    else if(option==7){
+        rm.displayCategories();
+    }
     
     cout<<"0: To insert recipe:\n1: To adding a catagory:\n2: To adding recipe in a category:\n3: To plan your meal\n4: To display your meal\n5: To search recipe\n6: To search recipe by ingredients\n7: To display categories\n-1: Exit\n";
     cin>>option;
