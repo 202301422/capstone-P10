@@ -173,6 +173,8 @@ int main() {
     cout<<"WELCOME TO RECIPE MANAGER!!\n\n\n";
     int option;
     vector<Recipe> R;
+    Recipe soup("soup",{"tomatoes","water"},"boil the water");
+    Recipe cake("cake",{"bread","cream"},"put cream on bread");
  //Here we gave user the options for doing specific tasks, there are 7 different tasks.
     cout<<"0: To insert recipe:\n1: To adding a catagory:\n2: To adding recipe in a category:\n3: To plan your meal\n4: To display your meal\n5: To search recipe\n6: To search recipe by ingredients\n7: To display categories\n-1: Exit\n";
     cin>>option;
