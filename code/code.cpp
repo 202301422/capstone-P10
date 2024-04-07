@@ -1,7 +1,30 @@
 #include<bits/stdc++.h>
 #include<stdio.h>
 using namespace std;
-
+class Recipe {
+ public:
+    string name; // contains recipe's name
+    vector<string> ingred; // contain's recipe's ingredients as vector of strings 
+    string instructions;  // contains instructions about how to make recipe
+    Recipe(string n,vector<string> ing,string instr):name(n),ingred(ing),instructions(move(instr)){}//constructer for object of recipe class
+    string getingredAsString() const {//function to add ingrediants in vector
+        string ingredStr;
+        for (const auto& ingredient : ingred) {
+            ingredStr += ingredient + ", ";
+        }
+        if (!ingredStr.empty()) {
+            ingredStr.pop_back();
+            ingredStr.pop_back();
+        }
+        return ingredStr;
+    }
+    string getName() const {
+        return name;
+    }
+    string getInstructions() const {
+        return instructions;
+    }
+};
 class Category {
 public:
     string name;
