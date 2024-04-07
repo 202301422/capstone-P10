@@ -73,24 +73,26 @@ private:
     unordered_map<string, Category*> categories;
 
 public:
+//This function is for adding the category.
     void addCategory(string categoryName) {
         if (categories.find(categoryName) == categories.end()) {
             categories[categoryName] = new Category(categoryName);
         }
     }
-
+ //This function is for adding the recipe in a specific category.
     void addRecipeToCategory(Recipe* recipe, string categoryName) {
         if (categories.find(categoryName) != categories.end()) {
             categories[categoryName]->recipes.push_back(recipe);
         }
     }
-
+ //This vector function will take the recipe in a category.
     vector<Recipe*> getRecipesInCategory(string categoryName) {
         if (categories.find(categoryName) != categories.end()) {
             return categories[categoryName]->recipes;
         }
         return {};
     }
+ //This display function will display how many categories are there.
     void displayCategories() {
         cout << "Categories:" << endl;
         for (auto const& category : categories) {
